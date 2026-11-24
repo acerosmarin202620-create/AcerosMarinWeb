@@ -1,204 +1,200 @@
+const MAPS_QUERY =
+  "Calle 4 Mz. S Lt. 16 Parque Industrial El Asesor, Ate, Lima, Peru";
+
 export const EMPRESA = {
   nombre: "Aceros Marín",
-  razonSocial: "Aceros Marín",
-  telefonoFijo: "[Teléfono pendiente]",
+  razonSocial: "Aceros Marín E.I.R.L.",
+  logo: "/images/LogoAcerosMarin.png",
+  slogan: "Corte · Doblez · Rolado",
+  telefonoFijo: "01-5030519",
+  telefonoFijoHref: "tel:+5115030519",
   whatsapp: "51947997379",
   celulares: [
     { etiqueta: "WhatsApp", numero: "947 997 379", wa: "51947997379" },
+    { etiqueta: "WhatsApp", numero: "946 360 707", wa: "51946360707" },
   ],
-  direccion: "[Dirección real pendiente]",
-  distrito: "Lima, Perú",
+  direccion: "Cal. 4 Mz. S Lt. 16, Parque Industrial El Asesor",
+  sucursal: "Av. Las Torres Nro. 694",
+  distrito: "Ate, Lima",
+  horario: "Lun a Sáb · 8:00 AM - 6:00 PM",
+  zona: "Parque Industrial El Asesor, Ate — Lima",
   web: "",
   emails: {
-    ventas: "",
+    ventas: "aceros_marin@hotmail.com",
     administracion: "",
   },
-  mapsEmbedSrc:
-    "https://maps.google.com/maps?q=Lima%2C%20Peru&z=14&hl=es&output=embed",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lima%2C%20Peru",
+  mapsEmbedSrc: `https://maps.google.com/maps?q=${encodeURIComponent(MAPS_QUERY)}&z=16&hl=es&output=embed`,
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_QUERY)}`,
 } as const;
 
+export const CAPACIDAD = [
+  { titulo: "Guillotina", dato: "6 metros de largo" },
+  { titulo: "Plegadora", dato: "6 m · de 2 mm a 19 mm" },
+  { titulo: "Rolado", dato: "Conos, cilindros y planchas" },
+] as const;
+
+export const COMO_COTIZAR = [
+  "Elige el servicio: corte, doblez, rolado, bombeado o pestañado.",
+  "Indica medida, espesor y tipo de material (L.A.F., LAC, galvanizado o inoxidable).",
+  "Di cuántas piezas necesitas y para cuándo.",
+  "Si puedes, manda una foto de la pieza o el plano por WhatsApp.",
+] as const;
+
 export const NAV_LINKS = [
-  { href: "/#inicio", label: "Inicio" },
-  { href: "/#nosotros", label: "Sobre nosotros" },
-  { href: "/#servicios", label: "Servicios" },
-  { href: "/#galeria", label: "Galería de Fotos" },
-  { href: "/#contacto", label: "Contáctenos" },
+  { href: "/#inicio", id: "inicio", label: "Inicio" },
+  { href: "/#nosotros", id: "nosotros", label: "Nosotros" },
+  { href: "/#servicios", id: "servicios", label: "Servicios" },
+  { href: "/#cotizar", id: "cotizar", label: "Cotizar" },
+  { href: "/#galeria", id: "galeria", label: "Galería" },
+  { href: "/#contacto", id: "contacto", label: "Contacto" },
+  { href: "/#ubicacion", id: "ubicacion", label: "Ubicación" },
 ] as const;
 
 export const CARRUSEL = [
   {
     src: "/carousel/estructuras.webp",
-    alt: "Fabricación y montaje de estructuras metálicas — Aceros Marín",
+    alt: "Estructuras metálicas en taller",
   },
   {
     src: "/carousel/soldadura.webp",
-    alt: "Habilitación de material y metalmecánica en taller",
+    alt: "Soldadura y habilitación de material",
   },
   {
     src: "/carousel/rejas.webp",
-    alt: "Carpintería metálica y cerramientos",
+    alt: "Trabajos de metal en taller",
   },
   {
     src: "/carousel/techos.webp",
-    alt: "Coberturas y cerramientos metálicos",
+    alt: "Coberturas y montaje metálico",
   },
 ] as const;
 
-export const DIVISIONES = [
+export const SERVICIOS = [
   {
-    id: "estructuras",
-    titulo: "Estructuras Metálicas",
-    resumen:
-      "Nuestra división de Estructuras Metálicas cuenta con un grupo de profesionales con amplia experiencia en el diseño, fabricación y montaje de estructuras metálicas, livianas, semipesadas y pesadas de acuerdo a las normas técnicas nacionales e internacionales.",
-    items: [
+    id: "bombeado-pestanado",
+    titulo: "Bombeado y pestañado",
+    descripcion:
+      "Servicio de bombeado y pestañado de tapas para tanques desde 0.5 mm hasta 25 mm de espesor, por diámetros de 6 metros.",
+    fotos: [
       {
-        id: "estructuras-pesadas",
-        titulo: "Estructuras Pesadas",
-        foto: "/servicios/estructuras-pesadas.png",
-        descripcion:
-          "Ejecutamos proyectos de estructuras metálicas pesadas. Nuestro equipo de ingeniería colabora y desarrolla los detalles y planos de fabricación, basados en las normas técnicas E-090, AISC y AWS. Técnicos e ingenieros capacitados garantizan calidad y seguridad en obra.",
+        src: "/images/bombeado-tapas.jpeg",
+        alt: "Tapas bombeadas y pestañadas para tanques",
       },
       {
-        id: "estructuras-semipesadas",
-        titulo: "Estructuras Semipesadas",
-        foto: "/servicios/estructuras-semipesadas.png",
-        descripcion:
-          "Ejecutamos proyectos de estructuras metálicas semipesadas. El equipo de ingeniería desarrolla los detalles y planos de fabricación según las normas E-090, AISC y AWS, con personal técnico e ingenieros de amplia experiencia.",
+        src: "/images/bombeado-maquina.jpeg",
+        alt: "Máquina de bombeado y pestañado de tapas",
       },
       {
-        id: "estructuras-livianas",
-        titulo: "Estructuras Livianas",
-        foto: "/servicios/estructuras-livianas.png",
-        descripcion:
-          "Ejecutamos proyectos de estructuras metálicas extra livianas y livianas. Desarrollamos la ingeniería de detalle y planos de fabricación según las normas E-090, AISC y AWS, con técnicos e ingenieros que garantizan calidad y seguridad.",
+        src: "/images/bombeado-piezas.jpeg",
+        alt: "Piezas de bombeado y pestañado",
+      },
+      {
+        src: "/images/bombeado-tanque.jpeg",
+        alt: "Tanque con tapa bombeada",
+      },
+      {
+        src: "/images/bombeado-pestanado.jpeg",
+        alt: "Bombeado y pestañado",
       },
     ],
   },
   {
-    id: "coberturas",
-    titulo: "Coberturas y Cerramientos",
-    resumen:
-      "Nuestra división de Coberturas y Cerramientos Metálicos cuenta con un grupo de profesionales con amplia experiencia en el diseño, selección y montaje de coberturas y cerramientos en naves industriales, campamentos, centros comerciales, centros mineros y edificaciones en general, de acuerdo a las normas técnicas nacionales e internacionales.",
-    items: [
+    id: "rolado-cono",
+    titulo: "Rolado de cono",
+    descripcion:
+      "Rolado cónico para tolvas, reducciones y piezas de transición. Trabajamos el cono según medida y espesor del material.",
+    fotos: [
       {
-        id: "cerramientos-metalicos",
-        titulo: "Cerramientos Metálicos",
-        foto: "/servicios/cerramientos-metalicos.png",
-        descripcion:
-          "Colaboramos en el desarrollo del proyecto y recomendamos el tipo de material. Realizamos planos de detalle, diseño, suministro y fabricación de accesorios conformados como zócalos, esquineros y remates. Instalamos cerramientos con láminas de acero Aluzinc y paneles termo-acústicos, e instalación de cerramientos no metálicos.",
+        src: "/images/rolado-cono.jpeg",
+        alt: "Rolado de cono",
       },
       {
-        id: "drywall",
-        titulo: "Drywall",
-        foto: "/servicios/drywall.png",
-        descripcion:
-          "Realizamos proyectos de ambientes de oficinas: instalamos muros, tabiques y cielos rasos en drywall y superboard. Suministro e instalación a precios competitivos, con calidad y seguridad.",
-      },
-      {
-        id: "coberturas-metalicas",
-        titulo: "Coberturas Metálicas",
-        foto: "/servicios/coberturas-metalicas.png",
-        descripcion:
-          "Asesoramos en la selección del material según la necesidad del cliente. Elaboramos planos de detalle de las cubiertas, diseño, suministro y fabricación de canaletas pluviales y accesorios conformados (cumbreras, cenefas y esquineros). Instalamos cubiertas de acero Aluzinc, paneles termo-acústicos y coberturas no metálicas como PVC y fibrocemento.",
+        src: "/images/rolado-cono-2.jpeg",
+        alt: "Rolado de cono en taller",
       },
     ],
   },
   {
-    id: "corte-doblez",
-    titulo: "Servicio de Corte y Doblez",
-    resumen:
-      "Nuestra división de Servicio de Corte y Doblez cuenta con máquinas hidráulicas diseñadas para distintos tipos de corte y doblez, adaptándose a la necesidad del cliente. El equipo técnico está capacitado para el corte y doblez que requiera cada proyecto.",
-    items: [
+    id: "rolado-planchas",
+    titulo: "Rolado de planchas",
+    descripcion:
+      "Rolado de planchas para cilindros, ductos y piezas de sección especial. Habilitación de material en taller.",
+    fotos: [
       {
-        id: "rolado",
-        titulo: "Servicio de Rolado",
-        foto: "/servicios/rolado.png",
-        descripcion:
-          "Rolado de planchas con técnicos capacitados: rolados cilíndricos, cónicos, de media luna y otros. Orientado a la elaboración de tanques de agua, tanques de gasolina y tanques de gas.",
-      },
-      {
-        id: "plegado",
-        titulo: "Servicio de Plegado",
-        foto: "/servicios/plegado.png",
-        descripcion:
-          "Plegado con máquinas hidráulicas en longitudes L=2.40 m, L=3.00 m y L=6.00 m, y espesores de 0.4 mm a 9.0 mm. Realizamos canales U y C, zetas Z, ángulos, omegas, marcos de puerta, pasos de escalera, bandejas porta-cables, rieles, tapajuntas, canaletas y accesorios conformados.",
-      },
-      {
-        id: "corte-planchas",
-        titulo: "Corte de Planchas",
-        foto: "/servicios/corte-planchas.png",
-        descripcion:
-          "Corte de planchas con máquinas hidráulicas en longitudes L=2.40 m, L=3.00 m y L=6.00 m, y espesores de 0.4 mm a 9.0 mm. Materiales: planchas galvanizadas, LAC, LAF, estriadas, perforadas y de acero inoxidable.",
+        src: "/images/rolado-rectangular.jpeg",
+        alt: "Rolado de planchas",
       },
     ],
   },
   {
-    id: "carpinteria",
-    titulo: "Carpintería Metálica",
-    resumen:
-      "Nuestra división de Carpintería Metálica cuenta con profesionales con amplia experiencia en el diseño, fabricación y montaje de carpintería metálica de fierro y acero inoxidable en viviendas, edificios multifamiliares, edificios financieros, centros empresariales, centros comerciales, centros mineros, industrias, centros de estudios y edificaciones en general.",
-    items: [
+    id: "guillotina",
+    titulo: "Guillotina de 6 metros",
+    descripcion:
+      "Corte de planchas en guillotina de 6 metros. Servicio de corte para habilitar material según medida.",
+    fotos: [
       {
-        id: "revestimiento-inox",
-        titulo: "Revestimiento de Acero Inoxidable",
-        foto: "/servicios/revestimiento-inox.png",
-        descripcion:
-          "Asesoramos en el desarrollo y en la selección del tipo de acero inoxidable. Elaboramos planos de detalle y fabricación. Suministro, fabricación y montaje de revestimientos en columnas, puertas, hall de ascensores, pórticos de ingreso, zócalos, fachadas y más.",
+        src: "/images/guillotina-6m.jpeg",
+        alt: "Guillotina de 6 metros",
       },
+    ],
+  },
+  {
+    id: "plegadora",
+    titulo: "Plegadora de 6 metros",
+    descripcion:
+      "Doblez y plegado en máquina de 6 metros, con capacidad de 2 mm hasta 19 mm. Canales, ángulos y piezas conformadas a medida.",
+    fotos: [
       {
-        id: "carpinteria-inox",
-        titulo: "Carpintería de Acero Inoxidable",
-        foto: "/servicios/carpinteria-inox.png",
-        descripcion:
-          "Presentamos alternativas de solución según el tipo de proyecto. Asesoramos en el material, elaboramos planos de detalle y realizamos suministro, fabricación y montaje de barandas, pasamanos, rejillas, tapas, zócalos, tapajuntas, barras para baños accesibles, protectores y más.",
-      },
-      {
-        id: "carpinteria-carbono",
-        titulo: "Carpintería de Acero al Carbono",
-        foto: "/servicios/carpinteria-carbono.png",
-        descripcion:
-          "Asesoramos la carpintería metálica de fierro según la arquitectura y la necesidad del cliente. Planos de detalle, suministro, fabricación y montaje de puertas peatonales y vehiculares, puertas corredizas, cercos perimétricos, escaleras de gato y rectangulares, rejillas, plataformas, barandas y pasamanos.",
+        src: "/images/plegadora-6m.jpeg",
+        alt: "Plegadora de 6 metros, 2 mm a 19 mm",
       },
     ],
   },
 ] as const;
-
-export const SERVICIOS_PRINCIPALES = DIVISIONES.flatMap((division) =>
-  division.items.map((item) => ({
-    ...item,
-    division: division.titulo,
-    divisionId: division.id,
-  })),
-);
-
-export function getDivision(id: string) {
-  return DIVISIONES.find((division) => division.id === id);
-}
 
 export const GALERIA = [
   {
-    src: "/carousel/estructuras.webp",
-    alt: "Estructuras metálicas en taller y obra",
+    src: "/images/bombeado-tapas.jpeg",
+    alt: "Tapas bombeadas y pestañadas para tanques",
   },
   {
-    src: "/carousel/soldadura.webp",
-    alt: "Corte, doblez y habilitación de material",
+    src: "/images/bombeado-maquina.jpeg",
+    alt: "Máquina de bombeado y pestañado de tapas",
   },
   {
-    src: "/carousel/rejas.webp",
-    alt: "Carpintería metálica y cerramientos",
+    src: "/images/bombeado-piezas.jpeg",
+    alt: "Piezas de bombeado y pestañado",
   },
   {
-    src: "/carousel/techos.webp",
-    alt: "Coberturas metálicas",
+    src: "/images/bombeado-tanque.jpeg",
+    alt: "Tanque con tapa bombeada",
   },
   {
-    src: "/servicios/inoxidable.webp",
-    alt: "Trabajos en acero inoxidable",
+    src: "/images/bombeado-pestanado.jpeg",
+    alt: "Bombeado y pestañado",
   },
   {
-    src: "/servicios/escaleras.webp",
-    alt: "Barandas, pasamanos y carpintería",
+    src: "/images/rolado-cono.jpeg",
+    alt: "Rolado de cono",
+  },
+  {
+    src: "/images/rolado-cono-2.jpeg",
+    alt: "Rolado de cono en taller",
+  },
+  {
+    src: "/images/rolado-rectangular.jpeg",
+    alt: "Pieza rolada en taller",
+  },
+  {
+    src: "/images/guillotina-6m.jpeg",
+    alt: "Guillotina de 6 metros",
+  },
+  {
+    src: "/images/plegadora-6m.jpeg",
+    alt: "Plegadora de 6 metros, 2 mm a 19 mm",
+  },
+  {
+    src: "/images/taller-obra.jpeg",
+    alt: "Trabajos de taller Aceros Marín",
   },
 ] as const;

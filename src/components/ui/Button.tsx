@@ -23,7 +23,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <Link
-      className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 px-5 py-3.5 text-center font-display text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-200 hover:-translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal sm:px-6 sm:text-sm sm:tracking-[0.18em] ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

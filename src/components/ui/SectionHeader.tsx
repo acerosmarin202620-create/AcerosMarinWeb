@@ -17,16 +17,21 @@ export function SectionHeader({
 
   return (
     <div className="max-w-3xl">
-      <p className={`font-mono text-[11px] tracking-[0.28em] ${eyeColor}`}>
+      <p
+        className={`font-mono text-[10px] tracking-[0.18em] sm:text-[11px] sm:tracking-[0.28em] ${eyeColor}`}
+      >
         {eyebrow}
       </p>
+      <span className="mt-3 block h-0.5 w-12 bg-signal" aria-hidden />
       <h2
-        className={`mt-3 font-display text-3xl font-semibold uppercase leading-[1.1] tracking-tight sm:text-5xl ${titleColor}`}
+        className={`mt-3 font-display text-[1.75rem] font-semibold uppercase leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl ${titleColor}`}
       >
         {title}
       </h2>
       {description ? (
-        <p className={`mt-4 text-base leading-relaxed ${descColor}`}>
+        <p
+          className={`mt-4 text-sm leading-relaxed sm:text-base ${descColor}`}
+        >
           {description}
         </p>
       ) : null}

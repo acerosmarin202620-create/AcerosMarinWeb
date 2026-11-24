@@ -1,13 +1,51 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { EMPRESA, NAV_LINKS } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<(typeof NAV_LINKS)[number]["id"]>(
+    "inicio",
+  );
+
+  useEffect(() => {
+    const onScroll = () => {
+      const offset = 130;
+      let current: (typeof NAV_LINKS)[number]["id"] = NAV_LINKS[0].id;
+      for (const link of NAV_LINKS) {
+        const section = document.getElementById(link.id);
+        if (!section) continue;
+        if (section.getBoundingClientRect().top - offset <= 0) {
+          current = link.id;
+        }
+      }
+      setActiveId(current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const activeLabel =
+    NAV_LINKS.find((link) => link.id === activeId)?.label ?? "Inicio";
+
+  const linkClass = (id: string, mobile = false) => {
+    const isActive = id === activeId;
+    if (mobile) {
+      return `block border-b border-white/10 py-3.5 font-display text-sm uppercase tracking-[0.16em] ${
+        isActive ? "text-signal" : "text-bone"
+      }`;
+    }
+    return `relative pb-1 font-display text-[10px] uppercase tracking-[0.16em] transition-colors xl:text-[11px] xl:tracking-[0.18em] ${
+      isActive ? "text-signal" : "text-bone/75 hover:text-signal"
+    }`;
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/95 shadow-[0_8px_30px_rgba(10,10,11,0.25)] backdrop-blur-md">
@@ -19,38 +57,50 @@ export function Navbar() {
         Saltar al contenido
       </a>
       <nav
-        className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6"
+        className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:gap-4 sm:px-6 sm:py-2.5"
         aria-label="Principal"
       >
         <a
           href="/#inicio"
-          className="flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+          className="flex min-w-0 items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal sm:gap-3"
         >
-          <span className="flex h-10 w-10 items-center justify-center bg-signal font-display text-sm font-bold text-ink">
-            AM
-          </span>
-          <span className="font-display text-base font-semibold uppercase tracking-[0.14em] text-bone sm:text-lg">
+          <Image
+            src={EMPRESA.logo}
+            alt={EMPRESA.nombre}
+            width={96}
+            height={96}
+            priority
+            className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem]"
+          />
+          <span className="truncate font-display text-sm font-semibold uppercase tracking-[0.1em] text-bone sm:text-base sm:tracking-[0.14em]">
             {EMPRESA.nombre}
           </span>
         </a>
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-3 lg:flex xl:gap-5">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-display text-[11px] uppercase tracking-[0.2em] text-bone/75 transition-colors hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                aria-current={link.id === activeId ? "location" : undefined}
+                className={`${linkClass(link.id)} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal`}
               >
                 {link.label}
+                {link.id === activeId ? (
+                  <span
+                    className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-signal"
+                    aria-hidden
+                  />
+                ) : null}
               </a>
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <Button
             href={whatsappLink("Hola, quiero información sobre un proyecto.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex !px-5 !py-2.5"
+            className="hidden !px-5 !py-2.5 xl:inline-flex"
           >
             WhatsApp
           </Button>
@@ -66,6 +116,9 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+      <p className="border-t border-white/10 bg-navy px-4 py-1.5 text-center font-display text-[10px] uppercase tracking-[0.22em] text-signal lg:hidden">
+        Estás en: {activeLabel}
+      </p>
       {open ? (
         <div
           id="menu-movil"
@@ -76,13 +129,27 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block border-b border-white/10 py-3.5 font-display text-sm uppercase tracking-[0.16em] text-bone"
+                  aria-current={link.id === activeId ? "location" : undefined}
+                  className={linkClass(link.id, true)}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </a>
               </li>
             ))}
+            <li className="pt-4 md:hidden">
+              <Button
+                href={whatsappLink(
+                  "Hola, quiero información sobre un proyecto.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+                onClick={() => setOpen(false)}
+              >
+                WhatsApp
+              </Button>
+            </li>
           </ul>
         </div>
       ) : null}

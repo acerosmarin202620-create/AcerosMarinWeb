@@ -1,8 +1,29 @@
 @import "tailwindcss";
-@config "../../tailwind.config.ts";
+
+@theme {
+  --color-navy: #10243e;
+  --color-steel: #1d4e89;
+  --color-steelLight: #4a7fc1;
+  --color-ink: #0a0a0b;
+  --color-bone: #fafaf8;
+  --color-signal: #f4b400;
+  --color-signalDark: #c98f00;
+}
+
+@theme inline {
+  --font-display: var(--font-oswald), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
 
 html {
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7.5rem;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
 }
 
 ::selection {
