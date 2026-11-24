@@ -1,3 +1,4 @@
+import { EMPRESA } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
 function WhatsAppIcon() {
@@ -12,6 +13,8 @@ function WhatsAppIcon() {
 }
 
 export function WhatsAppButton() {
+  if (!EMPRESA.whatsapp) return null;
+
   return (
     <a
       href={whatsappLink(

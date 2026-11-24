@@ -77,8 +77,8 @@ const jsonLd = {
   "@type": "HomeAndConstructionBusiness",
   name: EMPRESA.razonSocial,
   description,
-  telephone: `+${EMPRESA.whatsapp}`,
-  email: EMPRESA.emails.ventas,
+  ...(EMPRESA.whatsapp ? { telephone: `+${EMPRESA.whatsapp}` } : {}),
+  ...(EMPRESA.emails.ventas ? { email: EMPRESA.emails.ventas } : {}),
   areaServed: "Ate, Lima",
   openingHours: "Mo-Sa 08:00-18:00",
   address: {

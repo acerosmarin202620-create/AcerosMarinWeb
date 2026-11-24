@@ -52,7 +52,7 @@ export function Hero() {
         </h1>
         <p className="mt-5 max-w-xl text-sm leading-relaxed text-bone/85 sm:mt-6 sm:text-base lg:text-lg">
           Bombeado y pestañado de tapas, rolado de cono, guillotina y plegadora
-          de 6 metros. Taller en Ate. Cotiza por WhatsApp.
+          de 6 metros. Taller en Ate. Cotiza por WhatsApp al 984 912 535.
         </p>
         <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap">
           <Button

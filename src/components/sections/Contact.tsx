@@ -7,6 +7,10 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EMPRESA, SERVICIOS } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
+const tieneWhatsApp = Boolean(EMPRESA.whatsapp);
+const tieneFijo = Boolean(EMPRESA.telefonoFijo);
+const tieneCorreo = Boolean(EMPRESA.emails.ventas);
+
 const fieldClass =
   "mt-1.5 w-full border border-navy/15 bg-bone px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal";
 
@@ -38,12 +42,16 @@ export function Contact() {
 
   return (
     <section id="contacto" className="bg-bone">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-14 sm:gap-10 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
+      <div
+        className={`mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-14 sm:gap-10 sm:px-6 sm:py-20 lg:gap-16 lg:py-24 ${
+          tieneWhatsApp ? "lg:grid-cols-2" : ""
+        }`}
+      >
         <div>
           <SectionHeader
             eyebrow="CONTÁCTENOS"
             title="Hablemos por WhatsApp"
-            description="WhatsApp 947 997 379 / 946 360 707. Fijo 01-5030519. Con medida, espesor y material te respondemos más rápido."
+            description="Escríbenos al 984 912 535. Todas las cotizaciones llegan a este número. Con medida, espesor y material te respondemos más rápido."
           />
           <ul className="mt-10 space-y-4">
             {EMPRESA.celulares.map((celular) => (
@@ -72,38 +80,42 @@ export function Contact() {
                 </span>
               </li>
             ))}
-            <li className="flex items-start gap-4 border border-navy/10 bg-white p-4 transition-colors hover:border-signal/40">
-              <span className="flex h-11 w-11 items-center justify-center bg-navy text-signal">
-                <Phone className="h-5 w-5" aria-hidden />
-              </span>
-              <span>
-                <span className="block font-mono text-[10px] tracking-[0.2em] text-steel">
-                  Fijo
+            {tieneFijo ? (
+              <li className="flex items-start gap-4 border border-navy/10 bg-white p-4 transition-colors hover:border-signal/40">
+                <span className="flex h-11 w-11 items-center justify-center bg-navy text-signal">
+                  <Phone className="h-5 w-5" aria-hidden />
                 </span>
-                <a
-                  href={EMPRESA.telefonoFijoHref}
-                  className="text-lg font-medium text-navy hover:text-steel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                >
-                  {EMPRESA.telefonoFijo}
-                </a>
-              </span>
-            </li>
-            <li className="flex items-start gap-4 border border-navy/10 bg-white p-4 transition-colors hover:border-signal/40">
-              <span className="flex h-11 w-11 items-center justify-center bg-navy text-signal">
-                <Mail className="h-5 w-5" aria-hidden />
-              </span>
-              <span>
-                <span className="block font-mono text-[10px] tracking-[0.2em] text-steel">
-                  Correo
+                <span>
+                  <span className="block font-mono text-[10px] tracking-[0.2em] text-steel">
+                    Fijo
+                  </span>
+                  <a
+                    href={EMPRESA.telefonoFijoHref}
+                    className="text-lg font-medium text-navy hover:text-steel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  >
+                    {EMPRESA.telefonoFijo}
+                  </a>
                 </span>
-                <a
-                  href={`mailto:${EMPRESA.emails.ventas}`}
-                  className="break-all text-lg font-medium text-navy hover:text-steel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                >
-                  {EMPRESA.emails.ventas}
-                </a>
-              </span>
-            </li>
+              </li>
+            ) : null}
+            {tieneCorreo ? (
+              <li className="flex items-start gap-4 border border-navy/10 bg-white p-4 transition-colors hover:border-signal/40">
+                <span className="flex h-11 w-11 items-center justify-center bg-navy text-signal">
+                  <Mail className="h-5 w-5" aria-hidden />
+                </span>
+                <span>
+                  <span className="block font-mono text-[10px] tracking-[0.2em] text-steel">
+                    Correo
+                  </span>
+                  <a
+                    href={`mailto:${EMPRESA.emails.ventas}`}
+                    className="break-all text-lg font-medium text-navy hover:text-steel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  >
+                    {EMPRESA.emails.ventas}
+                  </a>
+                </span>
+              </li>
+            ) : null}
             <li className="flex items-start gap-4 border border-navy/10 bg-white p-4 transition-colors hover:border-signal/40">
               <span className="flex h-11 w-11 items-center justify-center bg-navy text-signal">
                 <Clock className="h-5 w-5" aria-hidden />
@@ -138,6 +150,7 @@ export function Contact() {
           </div>
         </div>
 
+        {tieneWhatsApp ? (
         <div className="border border-navy/10 bg-white p-4 shadow-[0_16px_50px_rgba(16,36,62,0.08)] sm:p-8">
           <div className="flex items-center gap-3">
             <MessageCircle className="h-5 w-5 text-signal" aria-hidden />
@@ -240,6 +253,7 @@ export function Contact() {
             </button>
           </form>
         </div>
+        ) : null}
       </div>
     </section>
   );

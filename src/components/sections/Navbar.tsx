@@ -96,14 +96,16 @@ export function Navbar() {
           ))}
         </ul>
         <div className="flex shrink-0 items-center gap-2">
-          <Button
-            href={whatsappLink("Hola, quiero información sobre un proyecto.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden !px-5 !py-2.5 xl:inline-flex"
-          >
-            WhatsApp
-          </Button>
+          {EMPRESA.whatsapp ? (
+            <Button
+              href={whatsappLink("Hola, quiero información sobre un proyecto.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden !px-5 !py-2.5 xl:inline-flex"
+            >
+              WhatsApp
+            </Button>
+          ) : null}
           <button
             type="button"
             className="inline-flex h-11 w-11 items-center justify-center border border-white/20 text-bone lg:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
@@ -137,19 +139,21 @@ export function Navbar() {
                 </a>
               </li>
             ))}
-            <li className="pt-4 md:hidden">
-              <Button
-                href={whatsappLink(
-                  "Hola, quiero información sobre un proyecto.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full"
-                onClick={() => setOpen(false)}
-              >
-                WhatsApp
-              </Button>
-            </li>
+            {EMPRESA.whatsapp ? (
+              <li className="pt-4 md:hidden">
+                <Button
+                  href={whatsappLink(
+                    "Hola, quiero información sobre un proyecto.",
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                  onClick={() => setOpen(false)}
+                >
+                  WhatsApp
+                </Button>
+              </li>
+            ) : null}
           </ul>
         </div>
       ) : null}

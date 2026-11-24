@@ -50,16 +50,7 @@ export function Footer() {
           <ul className="mt-5 space-y-2.5 text-sm">
             <li>{EMPRESA.direccion}</li>
             <li>{EMPRESA.distrito}</li>
-            <li>Sucursal: {EMPRESA.sucursal}</li>
             <li>{EMPRESA.horario}</li>
-            <li>
-              <a
-                href={EMPRESA.telefonoFijoHref}
-                className="transition-colors hover:text-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-              >
-                Fijo {EMPRESA.telefonoFijo}
-              </a>
-            </li>
             {EMPRESA.celulares.map((celular) => (
               <li key={celular.numero}>
                 <a
@@ -75,14 +66,6 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href={`mailto:${EMPRESA.emails.ventas}`}
-                className="break-all transition-colors hover:text-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-              >
-                {EMPRESA.emails.ventas}
-              </a>
-            </li>
           </ul>
         </div>
       </div>

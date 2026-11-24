@@ -1,17 +1,13 @@
-const MAPS_QUERY =
-  "Calle 4 Mz. S Lt. 16 Parque Industrial El Asesor, Ate, Lima, Peru";
-
 export const EMPRESA = {
   nombre: "Aceros Marín",
   razonSocial: "Aceros Marín E.I.R.L.",
   logo: "/images/LogoAcerosMarin.png",
   slogan: "Corte · Doblez · Rolado",
-  telefonoFijo: "01-5030519",
-  telefonoFijoHref: "tel:+5115030519",
-  whatsapp: "51947997379",
+  telefonoFijo: "",
+  telefonoFijoHref: "",
+  whatsapp: "51984912535",
   celulares: [
-    { etiqueta: "WhatsApp", numero: "947 997 379", wa: "51947997379" },
-    { etiqueta: "WhatsApp", numero: "946 360 707", wa: "51946360707" },
+    { etiqueta: "WhatsApp", numero: "984 912 535", wa: "51984912535" },
   ],
   direccion: "Cal. 4 Mz. S Lt. 16, Parque Industrial El Asesor",
   sucursal: "Av. Las Torres Nro. 694",
@@ -20,11 +16,12 @@ export const EMPRESA = {
   zona: "Parque Industrial El Asesor, Ate — Lima",
   web: "",
   emails: {
-    ventas: "aceros_marin@hotmail.com",
+    ventas: "",
     administracion: "",
   },
-  mapsEmbedSrc: `https://maps.google.com/maps?q=${encodeURIComponent(MAPS_QUERY)}&z=16&hl=es&output=embed`,
-  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_QUERY)}`,
+  mapsEmbedSrc:
+    "https://maps.google.com/maps?q=-12.038445,-76.934256&z=17&hl=es&output=embed",
+  mapsUrl: "https://maps.app.goo.gl/9H3epXZ1v7hrN6p68",
 } as const;
 
 export const CAPACIDAD = [
