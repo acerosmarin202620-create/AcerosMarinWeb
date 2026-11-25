@@ -33,9 +33,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL("https://www.acerosmarin-atte.com"),
   title,
   description,
   keywords: [
@@ -57,18 +55,19 @@ export const metadata: Metadata = {
     siteName: EMPRESA.nombre,
     title,
     description,
+    url: "https://www.acerosmarin-atte.com",
     images: [
       {
-        url: "/images/plegadora-6m.jpeg",
-        alt: "Plegadora de 6 metros en Aceros Marín",
+        url: EMPRESA.logo,
+        alt: `${EMPRESA.nombre} — logo`,
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title,
     description,
-    images: ["/images/plegadora-6m.jpeg"],
+    images: [EMPRESA.logo],
   },
 };
 
@@ -89,6 +88,8 @@ const jsonLd = {
     addressCountry: "PE",
   },
   hasMap: EMPRESA.mapsUrl,
+  logo: `https://www.acerosmarin-atte.com${EMPRESA.logo}`,
+  image: `https://www.acerosmarin-atte.com${EMPRESA.logo}`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
